@@ -22,15 +22,50 @@
     driving: "驾车/打车"
   };
 
-  function googleDirectionsUrl(from, to, mode) {
-    return "https://www.google.com/maps/dir/?api=1"
-      + `&origin=${encodeURIComponent(from)}`
-      + `&destination=${encodeURIComponent(to)}`
-      + `&travelmode=${encodeURIComponent(mode || "transit")}`;
+  function hasCoordinates(point) {
+    return point
+      && Number.isFinite(point.lat)
+      && Number.isFinite(point.lng);
   }
 
-  function googlePlaceUrl(query) {
-    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+  function googleMapsValue(point) {
+    if (hasCoordinates(point)) {
+      return `${point.lat},${point.lng}`;
+    }
+    return point?.query || point?.name || String(point || "");
+  }
+
+  function googleDirectionsUrl(from, to, mode) {
+    const params = new URLSearchParams({
+      api: "1",
+      destination: googleMapsValue(to),
+      travelmode: mode || "transit",
+      dir_action: "navigate"
+    });
+
+    const origin = googleMapsValue(from);
+    if (origin) {
+      params.set("origin", origin);
+    }
+    if (from?.placeId) {
+      params.set("origin_place_id", from.placeId);
+    }
+    if (to?.placeId) {
+      params.set("destination_place_id", to.placeId);
+    }
+
+    return `https://www.google.com/maps/dir/?${params.toString()}`;
+  }
+
+  function googlePlaceUrl(point) {
+    const params = new URLSearchParams({
+      api: "1",
+      query: googleMapsValue(point)
+    });
+    if (point?.placeId) {
+      params.set("query_place_id", point.placeId);
+    }
+    return `https://www.google.com/maps/search/?${params.toString()}`;
   }
 
   function renderTopbar(currentDayId) {
@@ -258,8 +293,6 @@
           ${day.legs.map((leg, index) => {
             const from = findPoint(day, leg.from);
             const to = findPoint(day, leg.to);
-            const fromQuery = from.query || from.name;
-            const toQuery = to.query || to.name;
             return `
               <article class="leg-card">
                 <div class="leg-top">
@@ -270,9 +303,9 @@
                 </div>
                 <p class="leg-note">${esc(leg.note)}</p>
                 <div class="leg-actions">
-                  <a class="nav-link" href="${googleDirectionsUrl(fromQuery, toQuery, leg.mode)}" target="_blank" rel="noreferrer">Google 导航</a>
-                  <a class="place-link" href="${googlePlaceUrl(fromQuery)}" target="_blank" rel="noreferrer">起点定位</a>
-                  <a class="place-link" href="${googlePlaceUrl(toQuery)}" target="_blank" rel="noreferrer">终点定位</a>
+                  <a class="nav-link" href="${googleDirectionsUrl(from, to, leg.mode)}" target="_blank" rel="noreferrer">Google 导航</a>
+                  <a class="place-link" href="${googlePlaceUrl(from)}" target="_blank" rel="noreferrer">起点定位</a>
+                  <a class="place-link" href="${googlePlaceUrl(to)}" target="_blank" rel="noreferrer">终点定位</a>
                 </div>
               </article>
             `;
@@ -405,14 +438,30 @@
         fillColor: index === 0 ? "#b64848" : "#386b9e",
         fillOpacity: .95
       })
-        .bindPopup(`<div class="map-popup"><strong>${esc(point.name)}</strong><a href="${googlePlaceUrl(point.query || point.name)}" target="_blank" rel="noreferrer">Google Maps</a></div>`)
+        .bindPopup(`<div class="map-popup"><strong>${esc(point.name)}</strong><a href="${googlePlaceUrl(point)}" target="_blank" rel="noreferrer">Google Maps</a></div>`)
         .addTo(map);
     });
 
-    if (latLngs.length > 1) {
-      map.fitBounds(line.getBounds(), { padding: [28, 28] });
-    } else if (latLngs.length === 1) {
-      map.setView(latLngs[0], 14);
+    function fitRoute() {
+      if (typeof map.invalidateSize === "function") {
+        map.invalidateSize();
+      }
+      if (latLngs.length > 1) {
+        map.fitBounds(line.getBounds(), { padding: [28, 28] });
+      } else if (latLngs.length === 1) {
+        map.setView(latLngs[0], 14);
+      }
+    }
+
+    fitRoute();
+    const schedule = window.requestAnimationFrame
+      || ((callback) => (typeof setTimeout === "function" ? setTimeout(callback, 0) : callback()));
+    schedule(fitRoute);
+    if (typeof setTimeout === "function") {
+      setTimeout(fitRoute, 250);
+    }
+    if (typeof window.addEventListener === "function") {
+      window.addEventListener("resize", fitRoute);
     }
   }
 

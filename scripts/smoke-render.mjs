@@ -102,6 +102,7 @@ function renderPage(dataset, options = {}) {
     window: {},
     document,
     localStorage,
+    URLSearchParams,
     console
   };
 
@@ -131,6 +132,9 @@ assert(travelDay.title === "D3｜余市 Nikka + 小樽", "D3 document title did 
 assert(travelDay.html.includes("余市 Nikka + 小樽"), "D3 content did not render.");
 assert(travelDay.html.includes("https://www.google.com/maps/dir/?api=1"), "D3 Google direction links did not render.");
 assert(travelDay.html.includes("travelmode=transit"), "D3 transit direction mode did not render.");
+assert(travelDay.html.includes("dir_action=navigate"), "D3 mobile navigation intent did not render.");
+assert(travelDay.html.includes("origin=43.0582%2C141.35"), "D3 direction links did not use coordinate origins.");
+assert(travelDay.html.includes("destination=43.0687%2C141.3508"), "D3 direction links did not use coordinate destinations.");
 assert(travelDay.maps.get('[data-map="day-3"]')?.innerHTML.includes("fallback-map"), "D3 fallback map did not render.");
 
 const cityDay = renderPage({ page: "day", day: "4", base: "../" });
