@@ -1,0 +1,1044 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>北海道 2026/6/13-6/20 轻松逛吃温泉攻略</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1f2933;
+      --muted: #657383;
+      --line: #d8e0e8;
+      --paper: #f7f9fb;
+      --panel: #ffffff;
+      --teal: #147c7a;
+      --teal-soft: #e4f3f1;
+      --rose: #b64848;
+      --rose-soft: #f8e8e6;
+      --gold: #996f16;
+      --gold-soft: #fff3cf;
+      --blue: #386b9e;
+      --blue-soft: #e7f0f9;
+      --green: #4d7f36;
+      --green-soft: #e9f4e4;
+      --shadow: 0 12px 30px rgba(31, 41, 51, .08);
+      --radius: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.55;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(216, 224, 232, .88);
+      background: rgba(247, 249, 251, .95);
+      backdrop-filter: blur(16px);
+    }
+
+    .topbar-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 10px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      min-width: 180px;
+      font-weight: 760;
+      color: var(--ink);
+    }
+
+    .nav {
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav a {
+      flex: 0 0 auto;
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: #43505c;
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .nav a:hover {
+      background: #edf2f6;
+      color: var(--ink);
+    }
+
+    .hero {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 38px 22px 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.02fr) minmax(340px, .98fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .hero-copy {
+      padding: 6px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 360px;
+    }
+
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--teal);
+      font-size: 14px;
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 820px;
+      font-size: 42px;
+      line-height: 1.1;
+      letter-spacing: 0;
+    }
+
+    .lede {
+      margin: 18px 0 0;
+      max-width: 700px;
+      font-size: 17px;
+      color: #465562;
+    }
+
+    .hero-actions {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: var(--panel);
+      color: var(--ink);
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .button.primary {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 10px;
+      min-height: 360px;
+    }
+
+    .photo-tile {
+      position: relative;
+      overflow: hidden;
+      min-height: 168px;
+      border-radius: var(--radius);
+      background: #dce5ed;
+      box-shadow: var(--shadow);
+    }
+
+    .photo-tile:first-child {
+      grid-row: span 2;
+    }
+
+    .photo-tile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(.98) contrast(1.02);
+    }
+
+    .photo-tile::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(17, 24, 39, .58), rgba(17, 24, 39, .05) 56%);
+      pointer-events: none;
+    }
+
+    .photo-label {
+      position: absolute;
+      left: 12px;
+      bottom: 10px;
+      z-index: 1;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 760;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, .28);
+    }
+
+    main {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 22px 64px;
+    }
+
+    section {
+      margin-top: 28px;
+      scroll-margin-top: 78px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 12px;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 18px 0 0;
+    }
+
+    .metric {
+      min-height: 96px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 25px;
+      line-height: 1.1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .route-band {
+      padding: 18px;
+      border-radius: var(--radius);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .route-line {
+      display: grid;
+      grid-template-columns: repeat(9, minmax(112px, 1fr));
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .route-node {
+      position: relative;
+      min-height: 118px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfcfd;
+    }
+
+    .route-node::before {
+      content: "";
+      position: absolute;
+      top: 18px;
+      left: 12px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--teal);
+    }
+
+    .route-node strong,
+    .route-node span {
+      display: block;
+      padding-left: 18px;
+    }
+
+    .route-node strong {
+      font-size: 15px;
+    }
+
+    .route-node span {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .route-node.hot {
+      background: var(--rose-soft);
+      border-color: #efc4bf;
+    }
+
+    .route-node.onsen {
+      background: var(--teal-soft);
+      border-color: #b7d9d4;
+    }
+
+    .route-node.flex {
+      background: var(--gold-soft);
+      border-color: #ecd28c;
+    }
+
+    .filter-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .filter-btn {
+      min-height: 36px;
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--panel);
+      color: #42505d;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #fff;
+    }
+
+    .day-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .day-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 340px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .day-card.hidden {
+      display: none;
+    }
+
+    .day-head {
+      padding: 14px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfcfd;
+    }
+
+    .day-head .date {
+      display: inline-flex;
+      align-items: center;
+      min-height: 25px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 760;
+    }
+
+    .day-head h3 {
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+
+    .day-body {
+      padding: 14px;
+      flex: 1;
+    }
+
+    .slot {
+      margin-bottom: 12px;
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 8px;
+    }
+
+    .slot b {
+      color: var(--teal);
+      font-size: 13px;
+    }
+
+    .slot span {
+      color: #394653;
+      font-size: 14px;
+    }
+
+    .planb {
+      margin-top: auto;
+      padding: 12px 14px;
+      background: #f4f7fa;
+      border-top: 1px solid var(--line);
+      color: #445360;
+      font-size: 14px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: #eef3f6;
+      color: #41505f;
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 5px;
+      margin-top: 8px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .panel {
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .panel.accent-teal {
+      border-top: 4px solid var(--teal);
+    }
+
+    .panel.accent-rose {
+      border-top: 4px solid var(--rose);
+    }
+
+    .panel.accent-gold {
+      border-top: 4px solid var(--gold);
+    }
+
+    .panel.accent-blue {
+      border-top: 4px solid var(--blue);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 10px 9px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      color: #3a4855;
+      background: #f4f7fa;
+      font-size: 13px;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+    }
+
+    .table-wrap table {
+      min-width: 640px;
+    }
+
+    .notice {
+      padding: 14px;
+      border-radius: var(--radius);
+      background: var(--gold-soft);
+      color: #5d4718;
+      border: 1px solid #ead68f;
+      font-size: 14px;
+    }
+
+    .food-grid,
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .mini-card {
+      min-height: 160px;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+
+    .mini-card strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--ink);
+    }
+
+    .mini-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 0;
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      min-height: 48px;
+      padding: 12px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+      color: #394653;
+      font-size: 14px;
+    }
+
+    .check-item input {
+      width: 18px;
+      height: 18px;
+      margin-top: 1px;
+      accent-color: var(--teal);
+      flex: 0 0 auto;
+    }
+
+    .source-list {
+      columns: 2;
+      column-gap: 28px;
+      padding-left: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .source-list li {
+      break-inside: avoid;
+      margin-bottom: 8px;
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        min-height: auto;
+      }
+
+      .day-grid,
+      .food-grid,
+      .shop-grid,
+      .metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      h1 {
+        font-size: 32px;
+      }
+
+      .hero {
+        padding-top: 28px;
+      }
+
+      .photo-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 180px);
+      }
+
+      .photo-tile:first-child {
+        grid-row: auto;
+      }
+
+      .day-grid,
+      .food-grid,
+      .shop-grid,
+      .metric-grid,
+      .two-col,
+      .checklist {
+        grid-template-columns: 1fr;
+      }
+
+      .route-line {
+        grid-template-columns: repeat(9, 160px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top">北海道 2026</a>
+      <nav class="nav" aria-label="页面导航">
+        <a href="#overview">总览</a>
+        <a href="#days">每日</a>
+        <a href="#stay">住宿</a>
+        <a href="#transport">交通</a>
+        <a href="#food">美食</a>
+        <a href="#shopping">购物</a>
+        <a href="#checklist">清单</a>
+        <a href="#sources">来源</a>
+      </nav>
+    </div>
+  </header>
+
+  <div id="top" class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">6/13-6/20 · 札幌为主 · 洞爷湖温泉一晚 · 不自驾</p>
+      <h1>北海道轻松逛吃温泉攻略</h1>
+      <p class="lede">这趟不做大环线，把时间留给札幌的小店、寿司与成吉思汗、小樽和余市、洞爷湖的湖景温泉。每天控制在轻松到适中，保留一个机动日给天气和心情。</p>
+      <div class="hero-actions">
+        <a class="button primary" href="#days">看每日行程</a>
+        <a class="button" href="hokkaido_2026_06_13_06_20_guide.md">打开 Markdown 版</a>
+      </div>
+      <div class="metric-grid">
+        <div class="metric"><strong>8 天</strong><span>6/13 抵达，6/20 返程</span></div>
+        <div class="metric"><strong>7 晚</strong><span>札幌 6 晚，洞爷湖 1 晚</span></div>
+        <div class="metric"><strong>0 自驾</strong><span>JR、巴士、酒店接驳</span></div>
+        <div class="metric"><strong>1 机动日</strong><span>积丹 / 富良野 / 札幌慢逛</span></div>
+      </div>
+    </div>
+    <div class="photo-grid" aria-label="北海道目的地照片">
+      <figure class="photo-tile">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Otaru_Hokkaido_Japan.jpg?width=1200" alt="小樽运河">
+        <figcaption class="photo-label">小樽 · 运河与堺町通</figcaption>
+      </figure>
+      <figure class="photo-tile">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/130922%20Lake%20Toya%20Toyako%20Hokkaido%20Japan01s5.jpg?width=900" alt="洞爷湖">
+        <figcaption class="photo-label">洞爷湖 · 温泉与烟花</figcaption>
+      </figure>
+      <figure class="photo-tile">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Odori_Park_Sapporo.JPG?width=900" alt="札幌大通公园">
+        <figcaption class="photo-label">札幌 · 祭典与购物</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <main>
+    <section id="overview">
+      <h2>路线总览</h2>
+      <div class="route-band">
+        <div class="route-line">
+          <div class="route-node"><strong>6/12</strong><span>杭州下班后到浦东机场附近住</span></div>
+          <div class="route-node hot"><strong>6/13</strong><span>新千岁 → 札幌，狸小路/薄野</span></div>
+          <div class="route-node hot"><strong>6/14</strong><span>札幌祭，中岛公园或北海道神宫</span></div>
+          <div class="route-node"><strong>6/15</strong><span>余市 Nikka + 小樽堺町通</span></div>
+          <div class="route-node hot"><strong>6/16</strong><span>札幌祭最终日，市中心深逛</span></div>
+          <div class="route-node onsen"><strong>6/17</strong><span>札幌 → 洞爷湖温泉，晚间烟花</span></div>
+          <div class="route-node"><strong>6/18</strong><span>回札幌，百货地下与伴手礼</span></div>
+          <div class="route-node flex"><strong>6/19</strong><span>札幌慢逛，或积丹/富良野备选</span></div>
+          <div class="route-node"><strong>6/20</strong><span>札幌 → 新千岁 → 浦东</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="days">
+      <h2>每日执行卡</h2>
+      <div class="filter-row" aria-label="行程筛选">
+        <button class="filter-btn active" data-filter="all" type="button">全部</button>
+        <button class="filter-btn" data-filter="sapporo" type="button">札幌</button>
+        <button class="filter-btn" data-filter="daytrip" type="button">日归</button>
+        <button class="filter-btn" data-filter="onsen" type="button">温泉</button>
+        <button class="filter-btn" data-filter="flex" type="button">机动</button>
+        <button class="filter-btn" data-filter="transit" type="button">交通</button>
+      </div>
+
+      <div class="day-grid">
+        <article class="day-card" data-tags="transit">
+          <div class="day-head">
+            <span class="date">6/12 周五</span>
+            <h3>杭州 → 上海浦东</h3>
+            <span class="tag">低强度</span><span class="tag">前置交通</span>
+          </div>
+          <div class="day-body">
+            <div class="slot"><b>晚间</b><span>杭州下班后坐高铁到上海，直接去浦东机场附近酒店。</span></div>
+            <div class="slot"><b>住宿</b><span>选机场接驳或打车 15 分钟内到 T1/T2 的酒店。</span></div>
+            <div class="slot"><b>准备</b><span>护照、入境资料、日元现金、交通卡、机票放随身包。</span></div>
+          </div>
+          <div class="planb">避免住上海市区，6/13 尽量 05:30-06:00 到浦东机场。</div>
+        </article>
+
+        <article class="day-card" data-tags="sapporo transit">
+          <div class="day-head">
+            <span class="date">6/13 周六</span>
+            <h3>抵达札幌</h3>
+            <span class="tag">低强度</span><span class="tag">狸小路</span>
+          </div>
+          <div class="day-body">
+            <div class="slot"><b>上午</b><span>08:20 浦东起飞。</span></div>
+            <div class="slot"><b>下午</b><span>12:50 到新千岁；JR 到札幌，入住后逛大通、狸小路。</span></div>
+            <div class="slot"><b>晚上</b><span>成吉思汗だるま / 札幌啤酒园 / 汤咖喱三选一。</span></div>
+          </div>
+          <div class="planb">入境或 JR 耽误时，直接酒店附近吃，不硬排名店。</div>
+        </article>
+
+        <article class="day-card" data-tags="sapporo">
+          <div class="day-head">
+            <span class="date">6/14 周日</span>
+            <h3>札幌祭 + 市区逛吃</h3>
+            <span class="tag">中强度</span><span class="tag">祭典</span>
+          </div>
+          <div class="day-body">
+            <div class="slot"><b>上午</b><span>北海道神宫或中岛公园，看札幌祭摊位与仪式氛围。</span></div>
+            <div class="slot"><b>午餐</b><span>二条市场海鲜丼，或 Suage4 汤咖喱。</span></div>
+            <div class="slot"><b>下午</b><span>狸小路 1-7 丁目、Pole Town、Aurora Town。</span></div>
+          </div>
+          <div class="planb">人太多就改北海道大学、赤砖厅舍外观、札幌站商圈。</div>
+        </article>
+
+        <article class="day-card" data-tags="daytrip">
+          <div class="day-head">
+            <span class="date">6/15 周一</span>
+            <h3>余市 Nikka + 小樽</h3>
+            <span class="tag">中强度</span><span class="tag">海鲜</span>
+          </div>
+          <div class="day-body">
+            <div class="slot"><b>上午</b><span>札幌出发去余市，Nikka Museum、商店、付费品鉴吧。</span></div>
+            <div class="slot"><b>午餐</b><span>小樽寿司或三角市场海鲜丼，别太晚到。</span></div>
+            <div class="slot"><b>下午</b><span>小樽运河、堺町通、北一硝子、音乐盒堂、LeTAO。</span></div>
+          </div>
+          <div class="planb">不想跑余市时，直接小樽一日慢逛。</div>
+        </article>
+
+        <article class="day-card" data-tags="sapporo">
+          <div class="day-head">
+            <span class="date">6/16 周二</span>
+            <h3>札幌深逛</h3>
+            <span class="tag">中强度</span><span class="tag">购物</span>
+          </div>
+          <div class="day-body">
+            <div class="slot"><b>上午</b><span>北海道神宫例祭最终日巡游，留在市中心更稳。</span></div>
+            <div class="slot"><b>下午</b><span>札幌站、大丸、Stellar Place、PARCO、狸小路。</span></div>
+            <div class="slot"><b>晚上</b><span>预约成吉思汗、寿司或海鲜居酒屋。</span></div>
+          </div>
+          <div class="planb">如果巡游影响交通，全天只走步行可达路线。</div>
+        </article>
+
+        <article class="day-card" data-tags="onsen transit">
+          <div class="day-head">
+            <span class="date">6/17 周三</span>
+            <h3>札幌 → 洞爷湖温泉</h3>
+            <span class="tag">低强度</span><span class="tag">温泉</span>
+          </div>
+          <div class="day-body">
+            <div class="slot"><b>上午</b><span>札幌退房，大箱子寄存，只带一晚小包。</span></div>
+            <div class="slot"><b>中午</b><span>优先酒店接驳；备选道南巴士 11:30→14:10。</span></div>
+            <div class="slot"><b>晚上</b><span>酒店晚餐、泡汤，20:45-21:05 看洞爷湖烟花。</span></div>
+          </div>
+          <div class="planb">接驳满座就用直达巴士；下雨就酒店内休息泡汤。</div>
+        </article>
+
+        <article class="day-card" data-tags="sapporo transit">
+          <div class="day-head">
+            <span class="date">6/18 周四</span>
+            <h3>洞爷湖 → 札幌</h3>
+            <span class="tag">低强度</span><span class="tag">补购物</span>
+          </div>
+          <div class="day-body">
+            <div class="slot"><b>上午</b><span>慢起早餐，再泡一次，10:00 接驳回札幌最省心。</span></div>
+            <div class="slot"><b>下午</b><span>入住札幌，札幌站商圈、地下街、百货地下。</span></div>
+            <div class="slot"><b>晚上</b><span>根室花まる、海鲜居酒屋或汤咖喱。</span></div>
+          </div>
+          <div class="planb">回程晚点时不要预约太早，百货地下熟食很稳。</div>
+        </article>
+
+        <article class="day-card" data-tags="sapporo flex daytrip">
+          <div class="day-head">
+            <span class="date">6/19 周五</span>
+            <h3>机动日</h3>
+            <span class="tag">低-中强度</span><span class="tag">天气决定</span>
+          </div>
+          <div class="day-body">
+            <div class="slot"><b>默认</b><span>二条市场/场外市场，北海道大学，円山咖啡小店。</span></div>
+            <div class="slot"><b>备选</b><span>天气好报积丹海胆/神威岬一日游。</span></div>
+            <div class="slot"><b>备选</b><span>想坐观光列车，做富良野美瑛早夏花田。</span></div>
+          </div>
+          <div class="planb">最稳版本就是札幌慢逛 + 最后一顿认真吃。</div>
+        </article>
+
+        <article class="day-card" data-tags="transit">
+          <div class="day-head">
+            <span class="date">6/20 周六</span>
+            <h3>札幌 → 新千岁 → 浦东</h3>
+            <span class="tag">低强度</span><span class="tag">返程</span>
+          </div>
+          <div class="day-body">
+            <div class="slot"><b>上午</b><span>09:30 退房，10:30 左右从札幌站坐 JR 去机场。</span></div>
+            <div class="slot"><b>机场</b><span>午餐、机场拉面道场、白色恋人、六花亭、Royce。</span></div>
+            <div class="slot"><b>航班</b><span>13:50 新千岁起飞，17:00 到浦东。</span></div>
+          </div>
+          <div class="planb">如果当晚回杭州，提前确认浦东到虹桥/杭州衔接。</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="stay">
+      <h2>住宿</h2>
+      <div class="two-col">
+        <div class="panel accent-blue">
+          <h3>札幌：大通 / 狸小路 / 薄野北侧</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>优先级</th><th>酒店</th><th>适合点</th><th>注意</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>Tokyu Stay Sapporo Odori</td><td>房内洗烘机，长旅行友好</td><td>确认房型是否带洗烘</td></tr>
+                <tr><td>2</td><td>karaksa hotel Sapporo</td><td>贴近狸小路，逛吃效率高</td><td>轻睡眠者选高楼层</td></tr>
+                <tr><td>3</td><td>HOTEL VISTA SAPPORO ODORI</td><td>面向狸小路，位置直接</td><td>房间可能偏紧凑</td></tr>
+                <tr><td>4</td><td>Cross Hotel Sapporo</td><td>位置居中，公共浴场加分</td><td>价格可能超预算</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel accent-teal">
+          <h3>洞爷湖：6/17 一晚</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th>优先级</th><th>酒店</th><th>适合点</th><th>交通重点</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>1</td><td>Toyako Manseikaku</td><td>价格、位置、接驳平衡</td><td>札幌站北口 13:00 接驳，需预约</td></tr>
+                <tr><td>2</td><td>The Lake View TOYA Nonokaze</td><td>湖景和情侣感更强</td><td>13:30→16:00，次日 10:00→12:30</td></tr>
+                <tr><td>3</td><td>Grand Toya / Kanko Hotel</td><td>预算友好备选</td><td>优先湖侧房型</td></tr>
+                <tr><td>4</td><td>Ko No Sumika / Sun Palace</td><td>体验更强</td><td>常超预算，看到特价再考虑</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <p class="notice" style="margin-top: 14px;">札幌尽量订同一家酒店前后两段，并确认能否 6/17 退房后寄存大箱子到 6/18 再入住。洞爷湖这一晚优先“一泊二食”。</p>
+    </section>
+
+    <section id="transport">
+      <h2>交通速查</h2>
+      <div class="two-col">
+        <div class="panel accent-teal">
+          <h3>新千岁机场 ↔ 札幌</h3>
+          <p>首选 JR Rapid Airport，到札幌约 30-40 分钟。新千岁机场 JR 站在航站楼 B1F。</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>时间</th><th>6/13 建议动作</th></tr></thead>
+              <tbody>
+                <tr><td>12:50</td><td>抵达新千岁</td></tr>
+                <tr><td>13:40-14:20</td><td>入境、取行李、到 B1F JR 站</td></tr>
+                <tr><td>14:00-15:00</td><td>JR 去札幌</td></tr>
+                <tr><td>16:30 后</td><td>大通、狸小路、薄野慢逛</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="panel accent-rose">
+          <h3>札幌 ↔ 洞爷湖</h3>
+          <p>优先酒店接驳。备选道南巴士直达 Toyako Onsen，成人单程 3700 日元，需预约。</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>方向</th><th>班次建议</th><th>备注</th></tr></thead>
+              <tbody>
+                <tr><td>札幌 → 洞爷湖</td><td>11:30 → 14:10</td><td>不用酒店接驳时最合适</td></tr>
+                <tr><td>札幌 → 洞爷湖</td><td>14:10 → 16:50</td><td>睡懒觉版，到店偏晚</td></tr>
+                <tr><td>洞爷湖 → 札幌</td><td>09:50 → 12:30</td><td>回札幌吃午饭</td></tr>
+                <tr><td>洞爷湖 → 札幌</td><td>12:50 → 15:30</td><td>上午多泡一会儿</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="food">
+      <h2>美食重点</h2>
+      <div class="food-grid">
+        <div class="mini-card"><strong>成吉思汗</strong><p>札幌代表性很强。だるま更经典，札幌啤酒园更宽敞稳定。</p></div>
+        <div class="mini-card"><strong>海鲜寿司</strong><p>小樽、根室花まる、二条市场都可安排，优先扇贝、北寄贝、海胆、花咲蟹。</p></div>
+        <div class="mini-card"><strong>汤咖喱</strong><p>Suage / GARAKU / RAMAI，适合午餐、雨天、疲惫日晚餐。</p></div>
+        <div class="mini-card"><strong>积丹海胆</strong><p>6-8 月当季。6/19 天气好且愿意一日游时加入。</p></div>
+        <div class="mini-card"><strong>牛乳甜品</strong><p>小樽 LeTAO、百货地下、新千岁机场都能补。</p></div>
+        <div class="mini-card"><strong>居酒屋</strong><p>最适合吃刺身、烤鱼、玉米、土豆、当地酒，留给 6/18 或 6/19。</p></div>
+      </div>
+    </section>
+
+    <section id="shopping">
+      <h2>购物与小店</h2>
+      <div class="shop-grid">
+        <div class="mini-card"><strong>狸小路 1-7 丁目</strong><p>古着、杂货、药妆、餐饮、小店。分两次逛更舒服。</p></div>
+        <div class="mini-card"><strong>Pole Town / Aurora Town</strong><p>雨天路线，连接大通、薄野和狸小路。</p></div>
+        <div class="mini-card"><strong>札幌站商圈</strong><p>Daimaru、Stellar Place、百货地下食品区，适合 6/16 或 6/18。</p></div>
+        <div class="mini-card"><strong>COCONO Susukino</strong><p>新商场、餐饮、杂货，晚饭前后顺路。</p></div>
+        <div class="mini-card"><strong>NORBESA 周边</strong><p>动漫、模型、娱乐、二手相关，适合找稀奇小东西。</p></div>
+        <div class="mini-card"><strong>小樽堺町通</strong><p>玻璃、音乐盒、LeTAO、甜品和伴手礼。</p></div>
+      </div>
+    </section>
+
+    <section id="checklist">
+      <h2>预约与核验清单</h2>
+      <div class="checklist">
+        <label class="check-item"><input type="checkbox" data-check="sapporo1">订札幌酒店 6/13-6/17。</label>
+        <label class="check-item"><input type="checkbox" data-check="toya">订洞爷湖酒店 6/17-6/18。</label>
+        <label class="check-item"><input type="checkbox" data-check="sapporo2">订札幌酒店 6/18-6/20，尽量同一家。</label>
+        <label class="check-item"><input type="checkbox" data-check="luggage">邮件确认札幌酒店可否寄存大箱子。</label>
+        <label class="check-item"><input type="checkbox" data-check="shuttle">预约洞爷湖酒店接驳，确认集合点和时间。</label>
+        <label class="check-item"><input type="checkbox" data-check="dinner1">预约一顿成吉思汗或札幌啤酒园。</label>
+        <label class="check-item"><input type="checkbox" data-check="dinner2">预约一顿寿司或海鲜居酒屋。</label>
+        <label class="check-item"><input type="checkbox" data-check="jun19">出发前一周按天气决定 6/19 积丹/富良野/札幌。</label>
+      </div>
+    </section>
+
+    <section id="budget">
+      <h2>预算粗估</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>项目</th><th>2 人粗估</th><th>备注</th></tr></thead>
+          <tbody>
+            <tr><td>札幌酒店 6 晚</td><td>4800-7200 元</td><td>按每晚 800-1200 元</td></tr>
+            <tr><td>洞爷湖温泉 1 晚</td><td>1500-2200 元</td><td>湖景/一泊二食可能上浮</td></tr>
+            <tr><td>市内/JR/巴士交通</td><td>2500-4500 元</td><td>不含可能的一日游</td></tr>
+            <tr><td>餐饮</td><td>5000-8000 元</td><td>看寿司、海胆、居酒屋比例</td></tr>
+            <tr><td>购物/伴手礼</td><td>单独设预算</td><td>新千岁机场适合最终补货</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="notice" style="margin-top: 14px;">这条路线不做函馆/道东大移动，大概率不需要全北海道 JR Pass。单买票 + 洞爷湖接驳/巴士更灵活。</p>
+    </section>
+
+    <section id="sources">
+      <h2>关键来源</h2>
+      <ul class="source-list">
+        <li><a href="https://www.hokkaido-airports.com/en/new-chitose/access/jr/">新千岁机场 JR 交通</a></li>
+        <li><a href="https://www.sapporo.travel/en/event/event-list/hokkaido_shrine_festival/">札幌官方：北海道神宫例祭</a></li>
+        <li><a href="https://www.sapporo.travel/en/spot/facility/tanukikoji_shopping_arcade/">札幌官方：狸小路</a></li>
+        <li><a href="https://www.sapporo.travel/en/spot/facility/sapporo_underground_shopping_malls/">札幌官方：地下街</a></li>
+        <li><a href="https://www.laketoya.com/en/access/">洞爷湖官方交通</a></li>
+        <li><a href="https://www.laketoya.com/en/event/fireworks/">洞爷湖长期烟花</a></li>
+        <li><a href="https://www.donanbus.co.jp/map/toyako_sapporo/?hp_lang=en">道南巴士：札幌-洞爷湖</a></li>
+        <li><a href="https://en.nonokaze-resort.com/access">Nonokaze 接驳</a></li>
+        <li><a href="https://www.manseikaku-hotels.co.jp/eng/access.html">Toyako Manseikaku 接驳</a></li>
+        <li><a href="https://www.nikka.com/en/distilleries/yoichi/visit/">Nikka 余市蒸馏所</a></li>
+        <li><a href="https://teikan.chuo-bus.co.jp/tw/course/289">中央巴士：积丹一日游</a></li>
+        <li><a href="https://www.jr-tower.jp/shop_detail_stellar/125">根室花まる JR Tower 店</a></li>
+      </ul>
+      <p class="footer-note">照片来自 Wikimedia Commons：Otaru Hokkaido Japan、Lake Toya Toyako Hokkaido Japan、Odori Park Sapporo。完整文字版见同目录 Markdown 文件。</p>
+    </section>
+  </main>
+
+  <script>
+    const buttons = document.querySelectorAll(".filter-btn");
+    const cards = document.querySelectorAll(".day-card");
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+        buttons.forEach((item) => item.classList.toggle("active", item === button));
+        cards.forEach((card) => {
+          const tags = card.dataset.tags || "";
+          card.classList.toggle("hidden", filter !== "all" && !tags.includes(filter));
+        });
+      });
+    });
+
+    document.querySelectorAll("[data-check]").forEach((box) => {
+      const key = "hokkaido-check-" + box.dataset.check;
+      box.checked = localStorage.getItem(key) === "1";
+      box.addEventListener("change", () => {
+        localStorage.setItem(key, box.checked ? "1" : "0");
+      });
+    });
+  </script>
+</body>
+</html>
