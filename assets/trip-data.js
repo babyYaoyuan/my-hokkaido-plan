@@ -1,6 +1,20 @@
 window.TRIP_DATA = {
   title: "北海道 2026/6/13-6/20 轻松逛吃温泉攻略",
   subtitle: "札幌 4 晚 → 洞爷湖温泉 1 晚 → 札幌 2 晚",
+  navTitle: "北海道 2026",
+  photoGridLabel: "北海道旅行照片",
+  checklistTitle: "预订清单",
+  hero: {
+    eyebrow: "6/13-6/20 · 札幌为主 · 洞爷湖温泉一晚 · 不自驾",
+    lede: "这版把攻略拆成每天的独立页面：每一天都有时间线、路线地图和每段交通的 Google 导航入口。",
+    metrics: [
+      { value: "9 页", text: "含 6/12 浦东前泊" },
+      { value: "7 晚", text: "札幌 6 晚，洞爷湖 1 晚" },
+      { value: "轻松", text: "默认逛吃，机动日看天气" }
+    ],
+    primaryAction: { label: "查看每日页面", href: "#days" },
+    secondaryAction: { label: "看总路线图", href: "#route-map" }
+  },
   photos: [
     {
       src: "https://commons.wikimedia.org/wiki/Special:FilePath/Otaru_Hokkaido_Japan.jpg?width=1200",
@@ -20,10 +34,33 @@ window.TRIP_DATA = {
     { label: "重点", value: "札幌祭、洞爷湖烟花、小樽余市", text: "6/14-6/16 正好遇到札幌祭，6/17 接洞爷湖长期烟花。" },
     { label: "节奏", value: "轻松到适中", text: "日均控制在可调整范围内，每天都留雨天或太累版本。" }
   ],
+  overviewRoute: {
+    title: "总路线图",
+    text: "核心动线是杭州/上海 → 新千岁 → 札幌，穿插小樽余市和洞爷湖温泉，避免大范围奔波。",
+    points: [
+      { id: "hz-east", name: "杭州东站", lat: 30.291, lng: 120.213, query: "杭州东站" },
+      { id: "pvg", name: "上海浦东国际机场", lat: 31.144, lng: 121.808, query: "上海浦东国际机场" },
+      { id: "cts", name: "新千岁机场", lat: 42.775, lng: 141.692, query: "New Chitose Airport" },
+      { id: "sapporo", name: "札幌", lat: 43.0582, lng: 141.3500, query: "Sapporo Japan" },
+      { id: "yoichi", name: "余市", lat: 43.1865, lng: 140.7949, query: "Yoichi Hokkaido" },
+      { id: "otaru", name: "小樽", lat: 43.1970, lng: 140.9934, query: "Otaru Hokkaido" },
+      { id: "toyako", name: "洞爷湖温泉", lat: 42.5636, lng: 140.8183, query: "Lake Toya Onsen" }
+    ],
+    legs: [
+      { from: "杭州东站", to: "上海浦东国际机场", mode: "transit", time: "出发前泊", duration: "约 2-3 小时", note: "杭州到上海后转去浦东机场附近，降低早航班风险。" },
+      { from: "上海浦东国际机场", to: "新千岁机场", mode: "transit", time: "6/13 上午", duration: "航班段", note: "以航司信息为准，抵达后 JR 进札幌。" },
+      { from: "新千岁机场", to: "札幌", mode: "transit", time: "抵达后", duration: "约 30-40 分钟", note: "JR Rapid Airport 最省心。" },
+      { from: "札幌", to: "余市", mode: "transit", time: "6/15 上午", duration: "约 75-95 分钟", note: "余市车次少于小樽，前一晚再核对。" },
+      { from: "余市", to: "小樽", mode: "transit", time: "6/15 中午", duration: "约 30-40 分钟", note: "下午留给堺町通、运河和甜品。" },
+      { from: "札幌", to: "洞爷湖温泉", mode: "transit", time: "6/17 中午", duration: "约 2.5-2.75 小时", note: "优先酒店接驳，备选道南巴士。" },
+      { from: "洞爷湖温泉", to: "札幌", mode: "transit", time: "6/18", duration: "约 2.5-2.75 小时", note: "回札幌后取寄存行李，做购物和美食补完。" }
+    ]
+  },
   hotels: [
     { area: "札幌", date: "6/13-6/17、6/18-6/20", text: "优先大通、狸小路、薄野北侧。最好订同一家，确认 6/17-6/18 可寄存大箱子。" },
     { area: "洞爷湖", date: "6/17-6/18", text: "优先湖景、一泊二食、接驳方便。Nonokaze 或 Manseikaku 都适合。" }
   ],
+  hotelsNote: "札幌尽量订同一家前后两段，并确认 6/17 退房后能否寄存大箱子到 6/18 再入住。",
   days: [
     {
       id: 0,
@@ -377,5 +414,16 @@ window.TRIP_DATA = {
     { label: "道南巴士：札幌-洞爷湖", url: "https://www.donanbus.co.jp/map/toyako_sapporo/?hp_lang=en" },
     { label: "Nikka 余市蒸馏所", url: "https://www.nikka.com/en/distilleries/yoichi/visit/" },
     { label: "中央巴士：积丹一日游", url: "https://teikan.chuo-bus.co.jp/tw/course/289" }
-  ]
+  ],
+  checklist: [
+    "订札幌酒店 6/13-6/17。",
+    "订洞爷湖酒店 6/17-6/18，优先一泊二食和接驳。",
+    "订札幌酒店 6/18-6/20，尽量同一家。",
+    "邮件确认札幌酒店可寄存大箱子过夜。",
+    "预约洞爷湖酒店接驳或道南巴士。",
+    "预约 1-2 顿关键晚餐。",
+    "6/18 晚上按天气决定 6/19 机动方案。",
+    "返程前一晚整理机场购物清单。"
+  ],
+  footerNote: "照片来自 Wikimedia Commons。完整文字版见同目录 Markdown 文件。"
 };

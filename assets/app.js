@@ -38,14 +38,14 @@
       .filter((day) => day.id > 0)
       .map((day) => {
         const current = currentDayId === day.id ? ' aria-current="page"' : "";
-        return `<a href="${path(day.file)}"${current}>${esc(day.date.slice(0, 4))}</a>`;
+        return `<a href="${esc(path(day.file))}"${current}>${esc(day.date.slice(0, 4))}</a>`;
       })
       .join("");
 
     return `
       <header class="topbar">
         <div class="topbar-inner">
-          <a class="brand" href="${path("index.html")}">北海道 2026</a>
+          <a class="brand" href="${path("index.html")}">${esc(trip.navTitle)}</a>
           <nav class="nav" aria-label="主要导航">
             <a href="${path("index.html")}"${currentDayId === null ? ' aria-current="page"' : ""}>总览</a>
             ${dayLinks}
@@ -59,7 +59,7 @@
 
   function renderPhotoGrid() {
     return `
-      <div class="photo-grid" aria-label="北海道旅行照片">
+      <div class="photo-grid" aria-label="${esc(trip.photoGridLabel)}">
         ${trip.photos.map((photo, index) => `
           <figure class="photo-tile${index === 0 ? " large" : ""}">
             <img src="${esc(photo.src)}" alt="${esc(photo.label)}">
@@ -71,20 +71,21 @@
   }
 
   function renderHero() {
+    const hero = trip.hero;
     return `
       <div class="hero">
         <div class="hero-copy">
-          <p class="eyebrow">6/13-6/20 · 札幌为主 · 洞爷湖温泉一晚 · 不自驾</p>
+          <p class="eyebrow">${esc(hero.eyebrow)}</p>
           <h1>${esc(trip.title)}</h1>
-          <p class="lede">这版把攻略拆成每天的独立页面：每一天都有时间线、路线地图和每段交通的 Google 导航入口。</p>
+          <p class="lede">${esc(hero.lede)}</p>
           <div class="metric-row">
-            <div class="metric"><strong>9 页</strong><span>含 6/12 浦东前泊</span></div>
-            <div class="metric"><strong>7 晚</strong><span>札幌 6 晚，洞爷湖 1 晚</span></div>
-            <div class="metric"><strong>轻松</strong><span>默认逛吃，机动日看天气</span></div>
+            ${hero.metrics.map((metric) => `
+              <div class="metric"><strong>${esc(metric.value)}</strong><span>${esc(metric.text)}</span></div>
+            `).join("")}
           </div>
           <div class="hero-actions">
-            <a class="button primary" href="#days">查看每日页面</a>
-            <a class="button" href="#route-map">看总路线图</a>
+            <a class="button primary" href="${esc(hero.primaryAction.href)}">${esc(hero.primaryAction.label)}</a>
+            <a class="button" href="${esc(hero.secondaryAction.href)}">${esc(hero.secondaryAction.label)}</a>
           </div>
         </div>
         ${renderPhotoGrid()}
@@ -109,32 +110,12 @@
   }
 
   function getOverviewRoute() {
-    const points = [
-      { name: "杭州东站", lat: 30.291, lng: 120.213, query: "杭州东站" },
-      { name: "上海浦东国际机场", lat: 31.144, lng: 121.808, query: "上海浦东国际机场" },
-      { name: "新千岁机场", lat: 42.775, lng: 141.692, query: "New Chitose Airport" },
-      { name: "札幌", lat: 43.0582, lng: 141.3500, query: "Sapporo Japan" },
-      { name: "余市", lat: 43.1865, lng: 140.7949, query: "Yoichi Hokkaido" },
-      { name: "小樽", lat: 43.1970, lng: 140.9934, query: "Otaru Hokkaido" },
-      { name: "洞爷湖温泉", lat: 42.5636, lng: 140.8183, query: "Lake Toya Onsen" }
-    ];
-    return {
-      points,
-      legs: [
-        { from: "杭州东站", to: "上海浦东国际机场", mode: "transit" },
-        { from: "上海浦东国际机场", to: "新千岁机场", mode: "transit" },
-        { from: "新千岁机场", to: "札幌", mode: "transit" },
-        { from: "札幌", to: "余市", mode: "transit" },
-        { from: "余市", to: "小樽", mode: "transit" },
-        { from: "札幌", to: "洞爷湖温泉", mode: "transit" },
-        { from: "洞爷湖温泉", to: "札幌", mode: "transit" }
-      ]
-    };
+    return trip.overviewRoute;
   }
 
   function renderMapSection(route, options = {}) {
-    const title = options.title || "路线图";
-    const text = options.text || "地图上的线段对应当天主要移动，下面每一段都有 Google 导航入口。";
+    const title = options.title || route.title || "路线图";
+    const text = options.text || route.text || "地图上的线段对应当天主要移动，下面每一段都有 Google 导航入口。";
     const homeClass = options.home ? " home-map" : "";
     return `
       <section class="map-section" id="${options.id || "route-map"}">
@@ -154,7 +135,7 @@
         <h2>每日页面</h2>
         <div class="day-grid">
           ${trip.days.map((day) => `
-            <a class="day-card" href="${path(day.file)}">
+            <a class="day-card" href="${esc(path(day.file))}">
               <div>
                 <div class="day-meta"><span>${esc(day.date)}</span><span>${esc(day.stay)}</span><span>${esc(day.intensity)}</span></div>
                 <h3 class="card-title">D${day.id}｜${esc(day.shortTitle)}</h3>
@@ -182,28 +163,17 @@
             </div>
           `).join("")}
         </div>
-        <p class="notice" style="margin-top: 14px;">札幌尽量订同一家前后两段，并确认 6/17 退房后能否寄存大箱子到 6/18 再入住。</p>
+        <p class="notice" style="margin-top: 14px;">${esc(trip.hotelsNote)}</p>
       </section>
     `;
   }
 
   function renderChecklist() {
-    const items = [
-      "订札幌酒店 6/13-6/17。",
-      "订洞爷湖酒店 6/17-6/18，优先一泊二食和接驳。",
-      "订札幌酒店 6/18-6/20，尽量同一家。",
-      "邮件确认札幌酒店可寄存大箱子过夜。",
-      "预约洞爷湖酒店接驳或道南巴士。",
-      "预约 1-2 顿关键晚餐。",
-      "6/18 晚上按天气决定 6/19 机动方案。",
-      "返程前一晚整理机场购物清单。"
-    ];
-
     return `
       <section>
-        <h2>预订清单</h2>
+        <h2>${esc(trip.checklistTitle)}</h2>
         <div class="two-col">
-          ${items.map((item, index) => `
+          ${trip.checklist.map((item, index) => `
             <label class="mini-card">
               <input type="checkbox" data-check="item-${index}">
               ${esc(item)}
@@ -221,7 +191,7 @@
         <ul class="source-list">
           ${trip.sources.map((source) => `<li><a href="${esc(source.url)}">${esc(source.label)}</a></li>`).join("")}
         </ul>
-        <p class="footer-note">照片来自 Wikimedia Commons。完整文字版见同目录 Markdown 文件。</p>
+        <p class="footer-note">${esc(trip.footerNote)}</p>
       </section>
     `;
   }
@@ -235,9 +205,7 @@
         ${renderMapSection(getOverviewRoute(), {
           id: "route-map",
           mapId: "overview",
-          home: true,
-          title: "总路线图",
-          text: "核心动线是杭州/上海 → 新千岁 → 札幌，穿插小樽余市和洞爷湖温泉，避免大范围奔波。"
+          home: true
         })}
         ${renderDayCards()}
         ${renderHotels()}
@@ -253,7 +221,7 @@
     return `
       <nav class="day-pager" aria-label="每日页面">
         ${trip.days.map((day) => `
-          <a href="${path(day.file)}"${day.id === currentId ? ' aria-current="page"' : ""}>D${day.id}</a>
+          <a href="${esc(path(day.file))}"${day.id === currentId ? ' aria-current="page"' : ""}>D${day.id}</a>
         `).join("")}
       </nav>
     `;
@@ -364,8 +332,8 @@
             ${day.tags.map((tag) => `<span class="tag">${esc(tag)}</span>`).join("")}
           </div>
           <div class="inline-actions">
-            ${previous ? `<a class="button" href="${path(previous.file)}">上一天 D${previous.id}</a>` : ""}
-            ${next ? `<a class="button primary" href="${path(next.file)}">下一天 D${next.id}</a>` : ""}
+            ${previous ? `<a class="button" href="${esc(path(previous.file))}">上一天 D${previous.id}</a>` : ""}
+            ${next ? `<a class="button primary" href="${esc(path(next.file))}">下一天 D${next.id}</a>` : ""}
             <a class="button" href="${path("index.html#days")}">回到每日总览</a>
           </div>
           ${renderDayPager(day.id)}
